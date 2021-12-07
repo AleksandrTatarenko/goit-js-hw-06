@@ -1,16 +1,17 @@
 const passEl = document.getElementById('validation-input');
-
-passEl.addEventListener('blur', () => {
-    if (passEl.value.length >= 6) {
-        passEl.classList.add('valid');
-        passEl.classList.remove('invalid');
-    } else {
-        passEl.classList.add('invalid');
-        passEl.classList.remove('valid');
-    }
-})
-
-passEl.addEventListener('focus', () => {
-    passEl.classList.remove('valid');
-    passEl.classList.remove('invalid');
-})
+console.log(passEl);
+const lengthPassEl = passEl.dataset.length;
+console.log(lengthPassEl);
+passEl.addEventListener('focus', onFocusInput);
+passEl.addEventListener('blur', onBlurInput);
+function onFocusInput(event) {
+}
+function onBlurInput(event) {
+   if(event.currentTarget.value.length == lengthPassEl){
+      event.currentTarget.classList.remove('invalid');
+      event.currentTarget.classList.add('valid');
+   } else {
+      event.currentTarget.classList.remove('valid');
+      event.currentTarget.classList.add('invalid');
+   }
+}
